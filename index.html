@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Career - Complete Job Portal, Interview Preparation Hub (Aptitude, DSA, Technical CS, HR) & Dedicated Topic-Wise DSA SDE Prep Sheet.">
+  <title>Career | Job Portal & Tech Interview Prep</title>
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti for Celebrations -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- ========================================== -->
+  <!-- TOP NAVIGATION BAR -->
+  <!-- ========================================== -->
+  <header class="app-header">
+    <div class="header-inner container">
+      <!-- Logo -->
+      <a href="#dashboard" class="logo-brand" data-nav-target="dashboard">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M16 18l6-6-6-6"/>
+            <path d="M8 6l-6 6 6 6"/>
+            <line x1="12" y1="2" x2="12" y2="22"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">Care<span class="text-gradient">er</span></span>
+          <span class="logo-badge">PRO</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="main-nav" id="main-nav">
+        <button class="nav-item active" data-nav-target="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </button>
+        <button class="nav-item" data-nav-target="jobs">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Job Portal
+        </button>
+        <button class="nav-item" data-nav-target="prep">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Prep Hub
+        </button>
+        <button class="nav-item" data-nav-target="dsa-sheet">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          DSA Sheets
+        </button>
+        <button class="nav-item" data-nav-target="tracker">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          My Tracker
+        </button>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button class="btn btn-outline btn-sm" id="btn-header-post-job" onclick="document.getElementById('btn-open-post-job')?.click() || window.location.assign('#jobs')">
+          + Post a Job
+        </button>
+        <button class="btn-icon theme-toggle-btn" id="theme-toggle" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <!-- Populated by JS -->
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN APP VIEWS CONTAINER -->
+  <!-- ========================================== -->
+  <main class="app-main">
+
+    <!-- ---------------------------------------- -->
+    <!-- VIEW 1: DASHBOARD -->
+    <!-- ---------------------------------------- -->
+    <section class="view-section active" id="view-dashboard">
+      <div class="container">
+        
+        <!-- Hero Section -->
+        <div class="hero-card">
+          <div class="hero-content">
+            <span class="hero-pill">🚀 The Ultimate Tech Career Accelerator</span>
+            <h1 class="hero-heading">
+              Land Your Dream Job &amp; <br/>
+              <span class="text-gradient">Ace Every Interview Round</span>
+            </h1>
+            <p class="hero-subtext">
+              High-paying software engineering jobs, topic-wise DSA SDE sheets with multi-language code solutions, plus comprehensive notes for Aptitude, Core CS, and HR rounds.
+            </p>
+            <div class="hero-cta-group">
+              <button class="btn btn-primary btn-lg" id="hero-explore-jobs">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Explore Tech Jobs
+              </button>
+              <button class="btn btn-secondary btn-lg" id="hero-start-dsa">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Solve DSA Sheet
+              </button>
+              <button class="btn btn-outline btn-lg" id="hero-start-prep">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                Study Prep Hub
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Stat Cards -->
+        <div class="dash-stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-icon bg-blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="stat-card-info">
+              <span class="stat-label">DSA Sheet Progress</span>
+              <span class="stat-value" id="dash-stat-dsa">0 / 30</span>
+              <div class="stat-progress-bar">
+                <div class="stat-progress-fill" id="dash-stat-dsa-bar" style="width: 0%"></div>
+              </div>
+              <span class="stat-sub" id="dash-stat-dsa-pct">0% Completed</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-icon bg-green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="stat-card-info">
+              <span class="stat-label">Applied Jobs</span>
+              <span class="stat-value" id="dash-stat-applied">0</span>
+              <span class="stat-sub">Track application status</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-icon bg-purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="stat-card-info">
+              <span class="stat-label">Saved Bookmarks</span>
+              <span class="stat-value" id="dash-stat-saved">0</span>
+              <span class="stat-sub">Jobs saved to apply later</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-icon bg-amber">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="stat-card-info">
+              <span class="stat-label">Preparation Streak</span>
+              <span class="stat-value">🔥 Active</span>
+              <span class="stat-sub">Daily learning consistency</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Main Grid -->
+        <div class="dash-grid-layout">
+          <!-- Left Column: Daily Problem & Featured Jobs -->
+          <div class="dash-left-col">
+            <!-- Daily Problem Card -->
+            <div class="dash-box" id="dash-daily-problem">
+              <!-- Rendered by JS -->
+            </div>
+
+            <!-- Featured Jobs Section -->
+            <div class="dash-box">
+              <div class="dash-box-header">
+                <div>
+                  <h3 class="dash-box-title">Featured Tech Openings</h3>
+                  <p class="dash-box-subtitle">Verified opportunities at top product companies</p>
+                </div>
+                <button class="btn btn-outline btn-sm" onclick="window.location.hash='jobs'">View All</button>
+              </div>
+              <div class="jobs-grid" id="dash-featured-jobs">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Prep Pathways & Tips -->
+          <div class="dash-right-col">
+            <div class="dash-box">
+              <h3 class="dash-box-title">Interview Modules</h3>
+              <p class="dash-box-subtitle">Structured roadmap to clear all rounds</p>
+              
+              <div class="prep-shortcuts-list">
+                <a href="#prep" class="prep-shortcut-card" onclick="document.querySelector('[data-prep-sub=\'aptitude\']')?.click()">
+                  <div class="shortcut-icon bg-blue">🧮</div>
+                  <div>
+                    <h4>Aptitude &amp; Reasoning</h4>
+                    <p>Quant, Logical &amp; Verbal with Speed Tricks &amp; Quiz</p>
+                  </div>
+                </a>
+
+                <a href="#dsa-sheet" class="prep-shortcut-card">
+                  <div class="shortcut-icon bg-green">🧩</div>
+                  <div>
+                    <h4>Topic-Wise DSA Sheet</h4>
+                    <p>30+ Essential SDE questions with multi-lang code</p>
+                  </div>
+                </a>
+
+                <a href="#prep" class="prep-shortcut-card" onclick="document.querySelector('[data-prep-sub=\'technical\']')?.click()">
+                  <div class="shortcut-icon bg-purple">💻</div>
+                  <div>
+                    <h4>Technical CS Core</h4>
+                    <p>OS, DBMS, Networks &amp; System Design FAQs</p>
+                  </div>
+                </a>
+
+                <a href="#prep" class="prep-shortcut-card" onclick="document.querySelector('[data-prep-sub=\'hr\']')?.click()">
+                  <div class="shortcut-icon bg-amber">🤝</div>
+                  <div>
+                    <h4>HR &amp; Behavioral Round</h4>
+                    <p>STAR Method framework, winning sample answers</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Daily Pro Tip -->
+            <div class="pro-tip-box">
+              <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <strong>Pro Interview Tip</strong>
+              </div>
+              <p class="tip-text">
+                "In technical rounds, never stay silent. Verbalize your thought process: state brute-force first, analyze its complexity, identify the bottleneck, then propose the optimal approach."
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- VIEW 2: JOB PORTAL -->
+    <!-- ---------------------------------------- -->
+    <section class="view-section" id="view-jobs">
+      <div class="container">
+        
+        <!-- Portal Header -->
+        <div class="section-header-row">
+          <div>
+            <h1 class="section-title">Explore Tech Jobs</h1>
+            <p class="section-subtitle">Discover opportunities at top global engineering teams</p>
+          </div>
+          <button class="btn btn-primary" id="btn-open-post-job">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Post a New Job
+          </button>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="jobs-controls-bar">
+          <div class="search-input-wrapper">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="jobs-search-input" placeholder="Search by role, company, location, or skills (e.g. React, Golang, SDE 1)..." autocomplete="off">
+          </div>
+
+          <div class="jobs-filter-chips">
+            <button class="job-filter-chip active" data-filter="all">All Jobs</button>
+            <button class="job-filter-chip" data-filter="remote">Remote Only</button>
+            <button class="job-filter-chip" data-filter="intern">Internships</button>
+            <button class="job-filter-chip" data-filter="high-ctc">₹20+ LPA</button>
+            <button class="job-filter-chip" data-filter="fresher">Freshers (0-2 Yrs)</button>
+            <button class="job-filter-chip" data-filter="saved">Saved Jobs</button>
+            <button class="job-filter-chip" data-filter="applied">Applied Jobs</button>
+          </div>
+        </div>
+
+        <div class="jobs-status-bar">
+          <span class="jobs-count-badge" id="jobs-count-badge">Loading jobs...</span>
+          <span class="text-muted text-xs">Updated daily • Real-time status</span>
+        </div>
+
+        <!-- Jobs Grid Container -->
+        <div class="jobs-grid" id="jobs-list-container">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- VIEW 3: PREPARATION HUB -->
+    <!-- ---------------------------------------- -->
+    <section class="view-section" id="view-prep">
+      <div class="container">
+        
+        <!-- Header -->
+        <div class="section-header-row">
+          <div>
+            <h1 class="section-title">Interview Preparation Hub</h1>
+            <p class="section-subtitle">Comprehensive theory, cheatsheets, interactive quizzes, and behavioral coaching</p>
+          </div>
+        </div>
+
+        <!-- Sub Tabs Nav -->
+        <div class="prep-nav-tabs">
+          <button class="prep-nav-tab active" data-prep-sub="aptitude">
+            <span>🧮</span> Aptitude (Quant, Reasoning, Verbal)
+          </button>
+          <button class="prep-nav-tab" data-prep-sub="dsa-theory">
+            <span>🧩</span> DSA Theory &amp; Complexity
+          </button>
+          <button class="prep-nav-tab" data-prep-sub="technical">
+            <span>💻</span> Technical (OS, DBMS, Networks, SD)
+          </button>
+          <button class="prep-nav-tab" data-prep-sub="hr">
+            <span>🤝</span> HR &amp; Behavioral Round
+          </button>
+        </div>
+
+        <!-- Sub-Pane 1: Aptitude -->
+        <div class="prep-sub-pane active" id="prep-pane-aptitude">
+          <!-- Quiz Banner -->
+          <div class="quiz-cta-banner">
+            <div class="quiz-cta-info">
+              <span class="badge badge-accent">Interactive Assessment</span>
+              <h2>Test Your Speed &amp; Accuracy</h2>
+              <p>Practice 10 high-yield aptitude questions with real-time scoring and step-by-step mathematical explanations.</p>
+            </div>
+            <button class="btn btn-primary btn-lg" id="btn-start-aptitude-quiz">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Start Aptitude Quiz
+            </button>
+          </div>
+
+          <!-- Formula & Notes Cards -->
+          <div class="prep-notes-grid" id="aptitude-notes-container">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Sub-Pane 2: DSA Theory -->
+        <div class="prep-sub-pane" id="prep-pane-dsa-theory">
+          <div class="theory-grid">
+            <article class="prep-note-card">
+              <div class="prep-note-header">
+                <span class="badge badge-primary">Foundations</span>
+                <h3 class="prep-note-title">Big-O Complexity Cheat Sheet</h3>
+                <p class="prep-note-summary">Compare algorithmic complexities, execution time hierarchies, and data structure operation costs.</p>
+              </div>
+              <div class="prep-note-body">
+                <div class="complexity-table-wrapper">
+                  <table class="complexity-table">
+                    <thead>
+                      <tr>
+                        <th>Data Structure</th>
+                        <th>Access</th>
+                        <th>Search</th>
+                        <th>Insertion</th>
+                        <th>Deletion</th>
+                        <th>Space</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Array / Vector</strong></td>
+                        <td><span class="badge badge-easy">O(1)</span></td>
+                        <td><span class="badge badge-medium">O(N)</span></td>
+                        <td><span class="badge badge-medium">O(N)</span></td>
+                        <td><span class="badge badge-medium">O(N)</span></td>
+                        <td>O(N)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Singly Linked List</strong></td>
+                        <td><span class="badge badge-medium">O(N)</span></td>
+                        <td><span class="badge badge-medium">O(N)</span></td>
+                        <td><span class="badge badge-easy">O(1)</span></td>
+                        <td><span class="badge badge-easy">O(1)</span></td>
+                        <td>O(N)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Stack / Queue</strong></td>
+                        <td><span class="badge badge-medium">O(N)</span></td>
+                        <td><span class="badge badge-medium">O(N)</span></td>
+                        <td><span class="badge badge-easy">O(1)</span></td>
+                        <td><span class="badge badge-easy">O(1)</span></td>
+                        <td>O(N)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Hash Table / Map</strong></td>
+                        <td><span class="badge badge-neutral">-</span></td>
+                        <td><span class="badge badge-easy">O(1) avg</span></td>
+                        <td><span class="badge badge-easy">O(1) avg</span></td>
+                        <td><span class="badge badge-easy">O(1) avg</span></td>
+                        <td>O(N)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Binary Search Tree</strong></td>
+                        <td><span class="badge badge-easy">O(log N)</span></td>
+                        <td><span class="badge badge-easy">O(log N)</span></td>
+                        <td><span class="badge badge-easy">O(log N)</span></td>
+                        <td><span class="badge badge-easy">O(log N)</span></td>
+                        <td>O(N)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Binary Heap (PriorityQ)</strong></td>
+                        <td><span class="badge badge-neutral">-</span></td>
+                        <td><span class="badge badge-medium">O(N)</span></td>
+                        <td><span class="badge badge-easy">O(log N)</span></td>
+                        <td><span class="badge badge-easy">O(log N)</span></td>
+                        <td>O(N)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="markdown-preview" style="margin-top: 1.5rem;">
+                  <h3>Top 6 Algorithmic Patterns to Master</h3>
+                  <p><strong>1. Two Pointers:</strong> Ideal for sorted arrays/strings, searching pairs, palindrome checks, and container area problems.</p>
+                  <p><strong>2. Sliding Window:</strong> For finding sub-arrays/sub-strings of size k or matching constraints (longest substring without repeating chars).</p>
+                  <p><strong>3. Monotonic Stack:</strong> For next greater/smaller element queries, histogram areas, and daily temperature comparisons.</p>
+                  <p><strong>4. Fast and Slow Pointers (Floyd's Tortoise &amp; Hare):</strong> Cycle detection in linked lists and middle node extraction.</p>
+                  <p><strong>5. Breadth-First Search (BFS) vs DFS:</strong> BFS guarantees shortest path in unweighted graphs; DFS is preferred for backtracking, tree traversals, and topological sorting.</p>
+                  <p><strong>6. Dynamic Programming:</strong> Identifying optimal substructure and overlapping subproblems. Recognize whether problem is 0/1 Knapsack, Longest Common Subsequence, or Grid DP.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Sub-Pane 3: Technical CS Core -->
+        <div class="prep-sub-pane" id="prep-pane-technical">
+          <div class="tech-sub-grid">
+            <!-- Notes -->
+            <div id="tech-notes-container" class="prep-notes-grid">
+              <!-- Rendered by JS -->
+            </div>
+
+            <!-- Q&A Accordion -->
+            <div class="tech-qa-wrapper">
+              <div class="tech-qa-header">
+                <h3>Most Asked Technical Interview Questions</h3>
+                <p class="text-muted text-sm">Click each question to inspect model technical answers.</p>
+              </div>
+              <div id="tech-qa-container" class="accordion-list">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-Pane 4: HR & Behavioral -->
+        <div class="prep-sub-pane" id="prep-pane-hr">
+          <!-- STAR Method -->
+          <div id="hr-star-container">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- HR Questions Accordion -->
+          <div class="hr-questions-wrapper">
+            <div class="section-header-row" style="margin-bottom: 1rem;">
+              <div>
+                <h3>Top Behavioral Questions &amp; Winning Blueprints</h3>
+                <p class="text-muted text-sm">Detailed analysis of interviewer intent, pitfalls to avoid, and sample answers.</p>
+              </div>
+            </div>
+            <div id="hr-questions-container" class="accordion-list">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Questions to ask the interviewer -->
+          <div id="hr-ask-questions-container" style="margin-top: 2rem;">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- VIEW 4: DEDICATED DSA SHEET -->
+    <!-- ---------------------------------------- -->
+    <section class="view-section" id="view-dsa-sheet">
+      <div class="container">
+        
+        <!-- Sheet Header -->
+        <div class="section-header-row">
+          <div>
+            <h1 class="section-title">Topic-Wise SDE DSA Sheet</h1>
+            <p class="section-subtitle">Curated must-solve coding interview questions categorized by core data structures &amp; algorithmic paradigms.</p>
+          </div>
+          <button class="btn btn-primary" id="btn-dsa-random">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+            Pick Random Problem
+          </button>
+        </div>
+
+        <!-- Progress Overview Widget -->
+        <div class="dsa-progress-widget">
+          <div class="dsa-progress-top">
+            <div class="dsa-progress-title-group">
+              <span class="dsa-prog-heading">Overall Sheet Completion</span>
+              <span class="dsa-prog-stat" id="dsa-total-solved-badge">0 / 30 (0%)</span>
+            </div>
+            <div class="dsa-diff-counters">
+              <span class="diff-badge-count easy" id="dsa-easy-count">Easy: 0/0</span>
+              <span class="diff-badge-count med" id="dsa-med-count">Med: 0/0</span>
+              <span class="diff-badge-count hard" id="dsa-hard-count">Hard: 0/0</span>
+            </div>
+          </div>
+          <div class="dsa-progress-track">
+            <div class="dsa-progress-bar" id="dsa-overall-progress-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="dsa-controls-panel">
+          <div class="dsa-search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="dsa-search-input" placeholder="Search problem name, topic, or company (e.g. Google, Two Sum, Graphs)...">
+          </div>
+
+          <div class="dsa-filter-group">
+            <div class="btn-group">
+              <button class="btn btn-outline btn-sm dsa-diff-btn active" data-diff="all">All Difficulties</button>
+              <button class="btn btn-outline btn-sm dsa-diff-btn" data-diff="easy">Easy</button>
+              <button class="btn btn-outline btn-sm dsa-diff-btn" data-diff="medium">Medium</button>
+              <button class="btn btn-outline btn-sm dsa-diff-btn" data-diff="hard">Hard</button>
+            </div>
+
+            <div class="btn-group">
+              <button class="btn btn-outline btn-sm dsa-status-btn active" data-status="all">All Status</button>
+              <button class="btn btn-outline btn-sm dsa-status-btn" data-status="solved">Solved</button>
+              <button class="btn btn-outline btn-sm dsa-status-btn" data-status="unsolved">Unsolved</button>
+              <button class="btn btn-outline btn-sm dsa-status-btn" data-status="bookmarked">Bookmarked</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic Horizontal Chips -->
+        <div class="dsa-topic-scroll-wrapper">
+          <div class="dsa-topic-chips" id="dsa-topic-filters">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Problems Table -->
+        <div class="dsa-table-wrapper">
+          <table class="dsa-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">Status</th>
+                <th>Problem Title &amp; Target Companies</th>
+                <th style="width: 170px;">Topic</th>
+                <th style="width: 110px;">Difficulty</th>
+                <th style="width: 80px;">Practice</th>
+                <th style="width: 140px;">Solution</th>
+                <th style="width: 90px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dsa-problems-table-body">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- VIEW 5: MY TRACKER -->
+    <!-- ---------------------------------------- -->
+    <section class="view-section" id="view-tracker">
+      <div class="container">
+        
+        <div class="section-header-row">
+          <div>
+            <h1 class="section-title">My Career Tracker</h1>
+            <p class="section-subtitle">Manage applied jobs, saved bookmarks, topic mastery, and quiz records</p>
+          </div>
+          <div class="tracker-action-buttons">
+            <button class="btn btn-outline btn-sm" id="btn-export-progress">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export Data
+            </button>
+            <button class="btn btn-danger btn-sm" id="btn-reset-progress">
+              Reset Progress
+            </button>
+          </div>
+        </div>
+
+        <!-- Tracker Tabs -->
+        <div class="tracker-nav-tabs">
+          <button class="tracker-nav-tab active" data-tracker-target="applied">
+            Applied Jobs
+          </button>
+          <button class="tracker-nav-tab" data-tracker-target="saved">
+            Saved Bookmarks
+          </button>
+          <button class="tracker-nav-tab" data-tracker-target="mastery">
+            DSA Topic Mastery
+          </button>
+          <button class="tracker-nav-tab" data-tracker-target="quiz">
+            Quiz History
+          </button>
+        </div>
+
+        <!-- Pane 1: Applied Jobs -->
+        <div class="tracker-pane active" id="tracker-pane-applied">
+          <div id="tracker-applied-jobs">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Pane 2: Saved Jobs -->
+        <div class="tracker-pane" id="tracker-pane-saved">
+          <div class="jobs-grid" id="tracker-saved-jobs">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Pane 3: DSA Topic Mastery -->
+        <div class="tracker-pane" id="tracker-pane-mastery">
+          <div class="dsa-mastery-grid" id="tracker-dsa-topics-mastery">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Pane 4: Quiz History -->
+        <div class="tracker-pane" id="tracker-pane-quiz">
+          <div id="tracker-quiz-history">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODALS -->
+  <!-- ========================================== -->
+
+  <!-- Modal 1: Job Details -->
+  <div class="modal-overlay" id="modal-job-details">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div id="modal-job-details-body">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Apply to Job -->
+  <div class="modal-overlay" id="modal-apply-job">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title">Submit Job Application</h2>
+        <p class="modal-subtitle" id="apply-modal-job-title">Apply for this role</p>
+      </div>
+      <form id="form-job-application">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="app-full-name">Full Name *</label>
+            <input type="text" id="app-full-name" required placeholder="e.g. Alex Johnson">
+          </div>
+          <div class="form-group">
+            <label for="app-email">Email Address *</label>
+            <input type="email" id="app-email" required placeholder="alex@example.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="app-phone">Phone Number *</label>
+            <input type="tel" id="app-phone" required placeholder="+91 98765 43210">
+          </div>
+          <div class="form-group">
+            <label for="app-exp">Experience Level *</label>
+            <select id="app-exp" required>
+              <option value="Fresher / College Graduate">Fresher / College Graduate</option>
+              <option value="1 - 2 Years">1 - 2 Years</option>
+              <option value="3 - 5 Years">3 - 5 Years</option>
+              <option value="5+ Years">5+ Years</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="app-linkedin">LinkedIn Profile URL</label>
+            <input type="url" id="app-linkedin" placeholder="https://linkedin.com/in/username">
+          </div>
+          <div class="form-group">
+            <label for="app-portfolio">GitHub / Portfolio URL</label>
+            <input type="url" id="app-portfolio" placeholder="https://github.com/username">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="app-cover">Why are you a great fit? (Short Pitch)</label>
+          <textarea id="app-cover" rows="3" placeholder="Briefly highlight your relevant projects, tech stack, and key achievements..."></textarea>
+        </div>
+
+        <div class="modal-actions-right">
+          <button type="button" class="btn btn-outline modal-close-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Post a Job -->
+  <div class="modal-overlay" id="modal-post-job">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title">Post a Tech Job Opening</h2>
+        <p class="modal-subtitle">Reach thousands of talented developers and freshers</p>
+      </div>
+      <form id="form-post-job">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="post-title">Job Title *</label>
+            <input type="text" id="post-title" required placeholder="e.g. Senior Backend Engineer">
+          </div>
+          <div class="form-group">
+            <label for="post-company">Company Name *</label>
+            <input type="text" id="post-company" required placeholder="e.g. Stripe, Razorpay">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="post-location">Location *</label>
+            <input type="text" id="post-location" required placeholder="e.g. Bangalore, India or Remote">
+          </div>
+          <div class="form-group">
+            <label for="post-workplace">Workplace Type *</label>
+            <select id="post-workplace" required>
+              <option value="Remote">Remote</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="On-Site">On-Site</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="post-type">Job Type *</label>
+            <select id="post-type" required>
+              <option value="Full-Time">Full-Time</option>
+              <option value="Internship">Internship</option>
+              <option value="Contract">Contract</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="post-salary">Salary / Compensation *</label>
+            <input type="text" id="post-salary" required placeholder="e.g. ₹20 - 30 LPA or ₹80,000 / month">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="post-exp">Experience Required *</label>
+            <input type="text" id="post-exp" required placeholder="e.g. 1 - 3 Years or Freshers">
+          </div>
+          <div class="form-group">
+            <label for="post-skills">Skills Required (Comma separated) *</label>
+            <input type="text" id="post-skills" required placeholder="e.g. React, Node.js, PostgreSQL, Docker">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="post-desc">Detailed Description &amp; Responsibilities *</label>
+          <textarea id="post-desc" rows="4" required placeholder="Outline job requirements, day-to-day responsibilities, and team culture..."></textarea>
+        </div>
+
+        <div class="modal-actions-right">
+          <button type="button" class="btn btn-outline modal-close-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish Job Listing</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: DSA Solution & Multi-Lang Code -->
+  <div class="modal-overlay" id="modal-dsa-solution">
+    <div class="modal-card modal-lg">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div id="modal-dsa-solution-body">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: DSA Personal Notes -->
+  <div class="modal-overlay" id="modal-dsa-notes">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title" id="notes-modal-title">Personal Problem Notes</h2>
+        <p class="modal-subtitle">Record your edge-case learnings, algorithmic insights, and key takeaways.</p>
+      </div>
+      <div class="form-group">
+        <textarea id="notes-textarea" rows="7" placeholder="Type your personal notes here... (e.g. Watch out for negative numbers; remember to check if linked list has only 1 node)."></textarea>
+      </div>
+      <div class="modal-actions-right">
+        <button type="button" class="btn btn-outline modal-close-btn">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-save-note">Save Notes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Aptitude Quiz -->
+  <div class="modal-overlay" id="modal-aptitude-quiz">
+    <div class="modal-card modal-md">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div id="modal-quiz-body">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 7: Quiz Results -->
+  <div class="modal-overlay" id="modal-quiz-results">
+    <div class="modal-card modal-sm text-center">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div id="modal-quiz-results-body">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="logo-title">Care<span class="text-gradient">er</span></div>
+        <p class="text-muted text-sm">Empowering software engineers to break into top product companies.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#jobs">Job Portal</a>
+        <a href="#prep">Prep Hub</a>
+        <a href="#dsa-sheet">DSA Sheets</a>
+        <a href="#tracker">Tracker</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 Career. Built for ambitious developers.</p>
+    </div>
+  </footer>
+
+  <!-- App Script (ES Module) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
